@@ -1,20 +1,17 @@
 version: 2.1
 
-# Define the jobs we want to run for this project
+
 jobs:
-  build:
+  say-hello:
     docker:
-      - image: circleci/openjdk:stretch
-        auth:
-          username: vikramattri123
-          password: Attri99@$  # context / project UI env-var reference
+      - image: cimg/base:stable
     steps:
       - checkout
-      - run: echo "this is the build job"
+      - run:
+          name: "Say hello"
+          command: "echo Hello, World!"
 
-
-# Orchestrate our job run sequence
 workflows:
-  build_and_test:
+  say-hello-workflow:
     jobs:
-      - build
+      - say-hello
